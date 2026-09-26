@@ -1,15 +1,11 @@
 # CargoIranTruck website
 
-Static website files for CargoIranTruck. The repository root is the deployment output; no build command or framework is required.
+Static website files for CargoIranTruck, published through GitHub Pages at `https://cargoirantruck.com/`.
 
-## Cloudflare Pages
+## Deployment
 
-Connect this repository in Cloudflare Pages and use:
+The `main` branch root is the GitHub Pages publishing source. No build command is required. The repository's `CNAME` file configures `cargoirantruck.com` as the custom domain.
 
-- Production branch: `main`
-- Build command: leave blank
-- Build output directory: `/` (repository root)
+The site supports English at `/en/`, Simplified Chinese at `/zh.html`, and retained Persian pages and the original article archive. The quote form opens a prefilled email to `sales@cargoirantruck.com`; it does not automatically send or store inquiries.
 
-The site supports English at `/en/`, Simplified Chinese at `/zh.html`, and the retained Persian/original article paths. The quote form opens a prefilled email addressed to `sales@cargoirantruck.com`; it does not send inquiries automatically.
-
-The approved CargoIranTruck logo, wordmark, and favicon assets are included unchanged.
+The approved logo, wordmark, favicon, and other brand artwork are included unchanged.
