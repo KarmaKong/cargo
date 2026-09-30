@@ -1,0 +1,15 @@
+{
+  "adHocServices": {
+    "cargo-static": {
+      "name": "cargo-static",
+      "command": "python3 -m http.server 8099 --directory /home/user/workspace/cargo",
+      "env": {},
+      "portals": [],
+      "health": null,
+      "review": true,
+      "agent": "off",
+      "cwd": "/home/user/workspace/cargo",
+      "port": 32522
+    }
+  }
+}

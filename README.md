@@ -14,6 +14,8 @@ The approved logo, wordmark, favicon, and other brand artwork are included uncha
 
 CargoIranTruck indexes its destination and service pages plus seven original article topics. Articles copied from the main China–Iran site remain available to visitors, but carry `noindex,follow` and a canonical URL on `chinairantrucks.com` so the two domains do not compete for the same query.
 
+The three homepages carry CargoIranTruck's own JSON-LD (`Organization`, `WebSite`, `WebPage`, `Service`); the check below also fails if that markup is invalid, missing, mismatched with the canonical URL, or references the main site.
+
 After adding or moving content, regenerate and verify that boundary:
 
 ```sh
