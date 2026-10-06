@@ -96,4 +96,18 @@ for(const relative of ['en/index.html','zh.html']){
   const html=fs.readFileSync(path.join(root,relative),'utf8');
   if(!html.includes('srcset="/assets/site/hero-xinjiang-800.jpg 800w, /assets/site/hero-xinjiang.jpg 1672w"'))throw new Error(`Missing responsive hero: ${relative}`);
 }
-console.log(`PASS: ${sitemapRoutes.length} indexable URLs; ${uniqueSlugs.size} unique article topics per language; duplicate articles noindex with main-site canonical.`);
+const homepages={'index.html':'fa','en/index.html':'en','zh.html':'zh-Hans'};
+for(const file of htmlFiles){
+  const rel=path.relative(root,file).replaceAll(path.sep,'/'),html=fs.readFileSync(file,'utf8');
+  const blocks=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>match[1]);
+  const graph=blocks.flatMap(block=>{
+    if(/chinairantrucks/i.test(block))throw new Error(`JSON-LD references the main site: ${rel}`);
+    try{return JSON.parse(block)['@graph']??[]}catch(error){throw new Error(`Invalid JSON-LD in ${rel}: ${error.message}`)}
+  });
+  if(!(rel in homepages))continue;
+  const org=graph.find(node=>node['@type']==='Organization'),page=graph.find(node=>node['@type']==='WebPage');
+  const canonical=html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+  if(org?.['@id']!==`${domain}/#organization`||org.name!=='CargoIranTruck'||org.url!==`${domain}/`)throw new Error(`Missing CargoIranTruck Organization JSON-LD: ${rel}`);
+  if(!page||page.url!==canonical||page.inLanguage!==homepages[rel])throw new Error(`WebPage JSON-LD does not match canonical/language: ${rel}`);
+}
+console.log(`PASS: ${sitemapRoutes.length} indexable URLs; ${uniqueSlugs.size} unique article topics per language; duplicate articles noindex with main-site canonical; homepage JSON-LD valid.`);
