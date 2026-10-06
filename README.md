@@ -12,7 +12,7 @@ The approved logo, wordmark, favicon, and other brand artwork are included uncha
 
 ## SEO boundary
 
-CargoIranTruck indexes its destination and service pages plus seven original article topics. Articles copied from the main China–Iran site remain available to visitors, but carry `noindex,follow` and a canonical URL on `chinairantrucks.com` so the two domains do not compete for the same query.
+CargoIranTruck indexes its destination and service pages plus eight original article topics. Articles copied from the main China–Iran site remain available to visitors, but carry `noindex,follow` and a canonical URL on `chinairantrucks.com` so the two domains do not compete for the same query.
 
 After adding or moving content, regenerate and verify that boundary:
 
