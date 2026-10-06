@@ -1,0 +1,33 @@
+# CargoIranTruck
+
+> Road freight from Xinjiang, China to Iran and five Central Asian countries via Wuqia / Irkeshtam or Khorgos. Tilt / curtain-side semi-trailers, up to 96 m³ and 25 tons per truck. Formal quotes by email. No published rates.
+> 从新疆出发，公路运输至伊朗及中亚五国。侧帘 / 篷布半挂车，单车最高 96 m³、25 吨。正式报价通过邮件发送。网上不挂运价。
+
+## Facts / 口径
+
+- Gateways / 口岸: Wuqia / Irkeshtam (Xinjiang → Kyrgyzstan → Uzbekistan → Turkmenistan → Iran) and Khorgos (Xinjiang → Kazakhstan → Uzbekistan → Turkmenistan → Iran). Turgart and Alashankou are not operated. 乌恰 / 伊尔克什坦与霍尔果斯。吐尔尕特、阿拉山口目前不做。
+- Destinations / 目的地: Iran, Kazakhstan, Kyrgyzstan, Uzbekistan, Tajikistan, Turkmenistan. Central Asia routing and transit come with the formal quote. 伊朗及中亚五国；中亚路线及时效随正式报价提供。
+- Cargo / 货物: general cargo; lithium batteries (UN 3480 / UN 3481) must be declared at inquiry with a 16-section MSDS and UN packaging documents, confirmed per shipment on a formal quote. Undeclared lithium is refused. 普通货物；锂电池须在询价时申报，未申报拒收。
+- Delivery / 交付, two methods only: (1) yard-to-yard / 场站到场站 — warehouse/terminal to destination terminal; for Iran the buyer clears at Sarakhs or Lotfabad / 萨拉赫斯或洛特法巴德; (2) Iran CPT / DAP to the Tehran West Customs bonded warehouse / 德黑兰西海关监管仓, cleared by the consignee’s broker. Neither includes door-to-door, DDP, or destination clearance. 不做门到门、DDP 或目的地清关。
+- Mashhad Customs and Aprin Dry Port / 马什哈德、阿普林: quoted on demand and confirmed per shipment; not confirmed regular delivery points. 按需报价、逐票确认。
+- Tax / 税费: Kyrgyzstan 0.4% of cargo-invoice value applies only on the Wuqia line via Kyrgyzstan, paid by the customer, excluded from freight. It does not apply to Khorgos. 0.4% 仅乌恰线、客户另付。
+- TIR: optional; sealing at origin can reduce transloads but is not zero transload; TIR does not by itself change transit time or price.
+- Transit / 时效: Iran ranges on the site apply only to the Wuqia / Irkeshtam line as current operating ranges, not a commitment. Khorgos transit is given with the quote. Winter weather, ice and closures require slack; this site does not forecast closure dates. 非承诺时效；网页不预告封路。
+- Quote includes / 报价包含: freight, China-side warehousing, loading, China export declaration, foreign transit agency fees. Excludes destination clearance, insurance, inspection, securing/lifting, extra overseas costs, over-limit charges.
+- Inquiry / 询价: gateway, destination country and city, delivery method, cargo description, HS code, volume, weight, truck count, cargo-ready date; lithium adds UN number, 16-section MSDS, UN packaging documents. Email sales@cargoirantruck.com.
+- Contact: sales@cargoirantruck.com · WhatsApp https://wa.me/8615818796370 · Telegram https://t.me/Kenny_oop
+
+## Unique articles (indexable) / 可索引原创文章
+
+- [冬天中国至伊朗/中亚汽运：口岸、低温与计划弹性](https://cargoirantruck.com/zh/articles/winter-trucking/)
+- [Winter trucking China to Iran and Central Asia: gateways, cold, slack](https://cargoirantruck.com/en/articles/winter-trucking/)
+- [حمل جاده‌ای زمستانی چین به ایران و آسیای میانه](https://cargoirantruck.com/articles/winter-trucking/)
+- [中伊 TIR 帘布车怎么装箱](https://cargoirantruck.com/zh/articles/packing/) · [EN](https://cargoirantruck.com/en/articles/packing/) · [FA](https://cargoirantruck.com/articles/packing/)
+- [纺织服装卡车发伊朗](https://cargoirantruck.com/zh/articles/textiles/) · [EN](https://cargoirantruck.com/en/articles/textiles/) · [FA](https://cargoirantruck.com/articles/textiles/)
+- [中伊 TIR 卡航怎么跟踪](https://cargoirantruck.com/zh/articles/tracking/) · [EN](https://cargoirantruck.com/en/articles/tracking/) · [FA](https://cargoirantruck.com/articles/tracking/)
+- [聚合物粒料与非危化工卡车发伊朗](https://cargoirantruck.com/zh/articles/chemicals/) · [EN](https://cargoirantruck.com/en/articles/chemicals/) · [FA](https://cargoirantruck.com/articles/chemicals/)
+- [中国到马什哈德海关](https://cargoirantruck.com/zh/articles/mashhad/) · [EN](https://cargoirantruck.com/en/articles/mashhad/) · [FA](https://cargoirantruck.com/articles/mashhad/)
+- [阿普林陆港](https://cargoirantruck.com/zh/articles/aprin/) · [EN](https://cargoirantruck.com/en/articles/aprin/) · [FA](https://cargoirantruck.com/articles/aprin/)
+- [中伊 TIR 卡航货损索赔怎么做](https://cargoirantruck.com/zh/articles/damage-claims/) · [EN](https://cargoirantruck.com/en/articles/damage-claims/) · [FA](https://cargoirantruck.com/articles/damage-claims/)
+
+Duplicate article slugs copied from chinairantrucks.com remain on this host with `noindex,follow` and a canonical URL on chinairantrucks.com.
