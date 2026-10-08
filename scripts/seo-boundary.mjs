@@ -4,7 +4,7 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'..');
 const domain='https://cargoirantruck.com';
 const mainDomain='https://chinairantrucks.com';
-const uniqueSlugs=new Set(['aprin','chemicals','damage-claims','mashhad','packing','textiles','tracking']);
+const uniqueSlugs=new Set(['aprin','chemicals','damage-claims','from-xinjiang','mashhad','packing','textiles','tracking']);
 const articleRoots=['articles','en/articles','zh/articles'];
 const checkOnly=process.argv.includes('--check');
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):[path.join(dir,entry.name)]);
