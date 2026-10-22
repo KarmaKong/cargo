@@ -110,4 +110,4 @@ for(const file of htmlFiles){
   if(org?.['@id']!==`${domain}/#organization`||org.name!=='CargoIranTruck'||org.url!==`${domain}/`)throw new Error(`Missing CargoIranTruck Organization JSON-LD: ${rel}`);
   if(!page||page.url!==canonical||page.inLanguage!==homepages[rel])throw new Error(`WebPage JSON-LD does not match canonical/language: ${rel}`);
 }
-console.log(`PASS: ${sitemapRoutes.length} indexable URLs; ${uniqueSlugs.size} unique article topics per language; duplicate articles noindex with main-site canonical; homepage JSON-LD valid.`);
+console.log(`PASS: ${sitemapRoutes.length} indexable URLs; ${uniqueSlugs.size} unique article topics per language; CIT duplicate articles removed (404); homepage JSON-LD valid.`);
