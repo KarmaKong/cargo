@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {execSync} from 'node:child_process';
 
 const root=path.resolve(import.meta.dirname,'..');
 const domain='https://cargoirantruck.com';
@@ -67,13 +68,21 @@ for(const relative of ['en/index.html','zh.html']){
   }
 }
 
-const sitemapRoutes=htmlFiles.flatMap(file=>{
+const gitDate=rel=>{
+  try{
+    const out=execSync(`git log -1 --format=%cs -- ${JSON.stringify(rel)}`,{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+    if(out)return out;
+  }catch{}
+  return fs.statSync(path.join(root,rel)).mtime.toISOString().slice(0,10);
+};
+const sitemapEntries=htmlFiles.flatMap(file=>{
   const rel=path.relative(root,file).replaceAll(path.sep,'/'),route=routeFor(file),info=articleInfo(file);
   const html=fs.readFileSync(file,'utf8');
   if(rel==='404.html'||rel.includes('/404/')||rel.startsWith('google')||/<meta\s+http-equiv=["']refresh["']/i.test(html)||info?.duplicate)return [];
-  return [route];
-}).sort();
-const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+sitemapRoutes.map(route=>`  <url><loc>${domain}${route}</loc></url>`).join('\n')+'\n</urlset>\n';
+  return [{route,lastmod:gitDate(rel)}];
+}).sort((a,b)=>a.route<b.route?-1:a.route>b.route?1:0);
+const sitemapRoutes=sitemapEntries.map(e=>e.route);
+const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+sitemapEntries.map(e=>`  <url><loc>${domain}${e.route}</loc><lastmod>${e.lastmod}</lastmod></url>`).join('\n')+'\n</urlset>\n';
 const currentSitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 if(currentSitemap!==sitemap){
   if(checkOnly)throw new Error('sitemap.xml does not match the indexable URL set');
