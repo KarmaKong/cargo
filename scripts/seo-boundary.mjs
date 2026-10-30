@@ -5,7 +5,7 @@ import {execSync} from 'node:child_process';
 const root=path.resolve(import.meta.dirname,'..');
 const domain='https://cargoirantruck.com';
 const mainDomain='https://chinairantrucks.com';
-const uniqueSlugs=new Set(['aprin','chemicals','damage-claims','from-xinjiang','full-truck-planning','mashhad','packing','sensitive-cargo-review','textiles','tracking','winter-trucking','xinjiang-exit-choice','xinjiang-quote-three']);
+const uniqueSlugs=new Set(['aprin','chemicals','damage-claims','from-xinjiang','full-truck-planning','mashhad','packing','sensitive-cargo-review','textiles','tracking','transit-time-scope','winter-trucking','xinjiang-exit-choice','xinjiang-quote-three']);
 const articleRoots=['articles','en/articles','zh/articles'];
 const checkOnly=process.argv.includes('--check');
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(dir,entry.name)):[path.join(dir,entry.name)]);
