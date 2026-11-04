@@ -1,7 +1,7 @@
 # CargoIranTruck
 
-> Road freight from Xinjiang, China to Iran via the Wuqia or Khorgos gateways and Central Asia. Tilt / curtain-side semi-trailers, up to 96 m³ and 25 tons per truck. Formal quotes by email. No published rates.
-> 从新疆出发，经乌恰或霍尔果斯口岸、取道中亚，公路运输至伊朗。侧帘 / 篷布半挂车，单车最高 96 m³、25 吨。正式报价通过邮件发送。网上不挂运价。
+> Road freight from Xinjiang, China to Iran via the Wuqia or Khorgos gateways and Central Asia. Tilt / curtain-side semi-trailers, up to 80 m³ and 22 tons per truck. Formal quotes by email. No published rates.
+> 从新疆出发，经乌恰或霍尔果斯口岸、取道中亚，公路运输至伊朗。侧帘 / 篷布半挂车，单车最高 80 m³、22 吨。正式报价通过邮件发送。网上不挂运价。
 
 ## Facts / 口径
 
