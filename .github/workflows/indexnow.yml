@@ -1,0 +1,99 @@
+name: IndexNow ping
+
+# Notify IndexNow (Bing, Yandex, Seznam, Naver, Yep) about changed pages on
+# every push to main. Google does NOT support IndexNow - GSC handles Google.
+# Key is public by design and hosted at /<key>.txt.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "sitemap.xml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Submit changed URLs to IndexNow
+        env:
+          KEY: 132ea0186220b34b6e12ad5428d0620433d1d80513cb2148
+          HOST: cargoirantruck.com
+        run: |
+          set -euo pipefail
+
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || ! git rev-parse --verify --quiet "${BEFORE}^{commit}" >/dev/null 2>&1; then
+            BEFORE="$(git rev-list --max-parents=0 HEAD | tail -1)"
+          fi
+
+          CHANGED="$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- '*.html' \
+            | grep -Ev '^404\.html$|(^|/)_post\.html$|^google[0-9a-f]+\.html$' || true)"
+          if [ -z "$CHANGED" ]; then
+            echo "No indexable HTML changed; nothing to submit."
+            exit 0
+          fi
+
+          URLS=""
+          while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            [ -f "$f" ] || continue
+            grep -q 'http-equiv="refresh"' "$f" && continue
+            grep -qi '<meta[^>]*name="robots"[^>]*noindex' "$f" && continue
+            case "$f" in
+              index.html)   u="https://$HOST/" ;;
+              */index.html) u="https://$HOST/${f%index.html}" ;;
+              *)            u="https://$HOST/$f" ;;
+            esac
+            URLS="$URLS$u"$'\n'
+          done <<< "$CHANGED"
+
+          URLS="$(printf '%s' "$URLS" | sed '/^$/d' | sort -u)"
+          COUNT="$(printf '%s\n' "$URLS" | grep -c . || true)"
+          echo "Submitting $COUNT URL(s):"
+          printf '  - %s\n' $URLS
+
+          # IndexNow validates the key by fetching https://$HOST/$KEY.txt.
+          # Poll until the Pages deploy has published it instead of a blind sleep.
+          code=""
+          for i in $(seq 1 30); do
+            code="$(curl -s -o /dev/null -w '%{http_code}' "https://$HOST/$KEY.txt" || true)"
+            [ "$code" = "200" ] && break
+            echo "key file HTTP $code, waiting 10s ($i/30)"
+            sleep 10
+          done
+          if [ "$code" != "200" ]; then
+            echo "Key file never went live; aborting."
+            exit 1
+          fi
+
+          BODY="$(jq -cn \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg kl "https://$HOST/$KEY.txt" \
+            --argjson list "$(printf '%s\n' "$URLS" | jq -R . | jq -s .)" \
+            '{host:$host, key:$key, keyLocation:$kl, urlList:$list}')"
+          echo "$BODY"
+
+          code="$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data-raw "$BODY" \
+            https://api.indexnow.org/indexnow)"
+          echo "HTTP $code"
+          cat /tmp/indexnow.out || true
+          case "$code" in
+            200|202) echo "IndexNow accepted." ;;
+            *) echo "IndexNow rejected (HTTP $code)"; exit 1 ;;
+          esac
