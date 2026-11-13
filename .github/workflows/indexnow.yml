@@ -61,6 +61,12 @@ jobs:
           done <<< "$CHANGED"
 
           URLS="$(printf '%s' "$URLS" | sed '/^$/d' | sort -u)"
+
+          if [ -z "$URLS" ]; then
+            echo "All changed files were excluded (redirect stubs / noindex); nothing to submit."
+            exit 0
+          fi
+
           COUNT="$(printf '%s\n' "$URLS" | grep -c . || true)"
           echo "Submitting $COUNT URL(s):"
           printf '  - %s\n' $URLS
